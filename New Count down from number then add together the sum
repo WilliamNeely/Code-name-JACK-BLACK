@@ -1,0 +1,31 @@
+class main{
+    public static final String ANSI_BLUE = "\u001B[34m";  // blue
+    public static final String ANSI_RED = "\u001B[31m";   // red
+    public static final String ANSI_GREEN = "\u001B[32m"; // green
+    public static final String ANSI_RESET = "\u001B[0m";  // reset
+
+    public static void main(String[] args) throws InterruptedException {
+
+        int sum = 0; // Keeps track of the sum of all numbers
+
+        // Counting
+        for (int i = 1; i <= 100; i++) {
+
+            // Add the current number to the running sum
+            sum += i;
+
+            // Check if the number is even or odd
+            if (i % 2 == 0) {
+                System.out.println(ANSI_GREEN + i + " is even" + ANSI_RESET);
+            } else {
+                System.out.println(ANSI_RED + i + " is odd" + ANSI_RESET);
+            }
+
+            // Wait however many milliseconds before printing the next number
+            Thread.sleep(100);
+        }
+
+        // Print the total after the loop finishes
+        System.out.println(ANSI_BLUE + "The sum of numbers 1 through 100 is: " + sum + ANSI_RESET);
+    }
+}
