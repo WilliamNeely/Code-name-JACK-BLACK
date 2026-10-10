@@ -1,0 +1,11 @@
+class horsey {
+    public static void main(String[] args) {
+        Horse horse1 = new Horse("Silver", 2000);
+        Horse horse2 = new Horse("Trigger", 2010);
+        Horse horse3 = new Horse("Lucky", 2015);
+
+        System.out.println(horse1);
+        System.out.println(horse2);
+        System.out.println(horse3);
+    }
+}
