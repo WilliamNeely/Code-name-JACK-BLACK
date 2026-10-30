@@ -1,0 +1,50 @@
+public class StorageChest {
+    private String color;
+    private String material;
+    private int itemCount;
+
+    public StorageChest(String color, String material, int itemCount) {
+        this.color = color;
+        this.material = material;
+        this.itemCount = itemCount;
+    }
+
+    // Method to change the chest's attributes
+    public void changeChest(String newColor, String newMaterial, int newItemCount) {
+        color = newColor;
+        material = newMaterial;
+        itemCount = newItemCount;
+    }
+
+    // Display the chest's information
+    @Override
+    public String toString() {
+        return "Color: " + color + ", Material: " + material
+                + ", Items: " + itemCount;
+    }
+
+    public static void main(String[] args) {
+
+        // Create three storage chests
+        StorageChest chest1 = new StorageChest("Brown", "Wood", 5);
+        StorageChest chest2 = new StorageChest("Red", "Iron", 10);
+        StorageChest chest3 = new StorageChest("Black", "Stone", 3);
+
+        // Display original chests
+        System.out.println("Original Chests:");
+        System.out.println(chest1);
+        System.out.println(chest2);
+        System.out.println(chest3);
+
+        // Change attributes using the method
+        chest1.changeChest("Blue", "Wood", 8);
+        chest2.changeChest("Green", "Iron", 15);
+        chest3.changeChest("White", "Stone", 6);
+
+        // Display updated chests
+        System.out.println("\nUpdated Chests:");
+        System.out.println(chest1);
+        System.out.println(chest2);
+        System.out.println(chest3);
+    }
+}
