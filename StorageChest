@@ -1,0 +1,162 @@
+// Original StorageChest class by William Neely 2026 november
+ // This is the parent class that the other two classes extend.
+
+class StorageChest {
+
+    // These variables store the basic information about a chest.
+    private String color;
+    private String material;
+    private int itemCount;
+
+    // Constructor sets the starting information.
+    public StorageChest(String color, String material, int itemCount) {
+        this.color = color;
+        this.material = material;
+        this.itemCount = itemCount;
+    }
+
+    // This method lets us change the chest's information.
+    public void changeChest(String color, String material, int itemCount) {
+        this.color = color;
+        this.material = material;
+        this.itemCount = itemCount;
+    }
+
+    // Prints the chest's information.
+    @Override
+    public String toString() {
+        return "Color: " + color
+             + ", Material: " + material
+             + ", Items: " + itemCount;
+    }
+}
+
+
+// TreasureChest is the first new class.
+// It extends StorageChest and inherits its original features.
+class TreasureChest extends StorageChest {
+
+    // These variables hold the treasure chest's new information.
+    private int goldCoins;
+    private int treasureValue;
+
+    // Constructor creates a treasure chest.
+    public TreasureChest(String color, String material, int itemCount,
+                         int goldCoins, int treasureValue) {
+
+        // Get the original information from StorageChest.
+        super(color, material, itemCount);
+
+        // Set the new treasure information.
+        this.goldCoins = goldCoins;
+        this.treasureValue = treasureValue;
+    }
+
+    // This method adds coins to the treasure chest.
+    public void addCoins(int coins) {
+        goldCoins += coins;
+    }
+
+    // Prints the original information and the new treasure information.
+    @Override
+    public String toString() {
+        return super.toString()
+             + ", Gold Coins: " + goldCoins
+             + ", Treasure Value: $" + treasureValue;
+    }
+}
+
+
+// SupplyChest is the second new class.
+// It also extends StorageChest.
+class SupplyChest extends StorageChest {
+
+    // This array stores up to five different supplies.
+    private String[] supplies = new String[5];
+
+    // Tracks how many supplies have been added.
+    private int supplyCount = 0;
+
+    // Constructor creates a supply chest.
+    public SupplyChest(String color, String material, int itemCount) {
+        super(color, material, itemCount);
+    }
+
+    // This method adds supplies to the array.
+    public void addSupply(String supply) {
+
+        // Check if there is room for another supply.
+        if (supplyCount < supplies.length) {
+            supplies[supplyCount] = supply;
+            supplyCount++;
+        } else {
+            System.out.println("The supply chest is full!");
+        }
+    }
+
+    // Prints the original information and all the supplies.
+    @Override
+    public String toString() {
+
+        String result = super.toString() + ", Supplies: ";
+
+        // Loop through the array and print each supply.
+        for (int i = 0; i < supplyCount; i++) {
+            result += supplies[i];
+
+            if (i < supplyCount - 1) {
+                result += ", ";
+            }
+        }
+
+        return result;
+    }
+}
+
+
+// Main wrapper class.
+// This creates, changes, and prints all three types of chests.
+public class StorageChestDemo {
+
+    public static void main(String[] args) {
+
+        // Create the original StorageChest object.
+        StorageChest chest = new StorageChest("Brown", "Wood", 5);
+
+        // Create a TreasureChest object.
+        TreasureChest treasure = new TreasureChest(
+            "Gold", "Iron", 10, 100, 500
+        );
+
+        // Create a SupplyChest object.
+        SupplyChest supplies = new SupplyChest(
+            "Blue", "Wood", 3
+        );
+
+
+        // Change the original storage chest.
+        chest.changeChest("Green", "Oak", 7);
+
+        // Print the changed storage chest.
+        System.out.println("Regular Storage Chest:");
+        System.out.println(chest);
+
+
+        // Add coins to the treasure chest.
+        treasure.addCoins(50);
+
+        // Print the changed treasure chest.
+        System.out.println("\nTreasure Chest:");
+        System.out.println(treasure);
+
+
+        // Add supplies to the supply chest.
+        supplies.addSupply("Food");
+        supplies.addSupply("Water");
+        supplies.addSupply("Tools");
+
+        // Print the supply chest and its new supplies.
+        System.out.println("\nSupply Chest:");
+        System.out.println(supplies);
+    }
+}
