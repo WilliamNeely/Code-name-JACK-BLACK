@@ -1,0 +1,43 @@
+//By William Neely 2026 nov
+class ExceptionPractice {
+    public static void main(String[] args) {
+
+        // Create an array with 3 numbers.
+        int[] numbers = {10, 20, 30};
+
+        // First try-catch: Array out of bounds exception.
+        try {
+            System.out.println("Testing the array...");
+
+            // Index 5 does not exist in this array.
+            System.out.println(numbers[5]);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+            // Print a simple error message.
+            System.out.println("Error: You tried to access an array position that does not exist.");
+        }
+
+        // Second try-catch: Divide by zero exception.
+        try {
+            System.out.println("\nStarting math problems...");
+
+            int number = 10;
+            int divisor = 0;
+
+            // Dividing by zero causes an exception.
+            int answer = number / divisor;
+
+            System.out.println("Answer: " + answer);
+
+        } catch (ArithmeticException e) {
+
+            // Print a simple error message.
+            System.out.println("Error: You cannot divide a number by zero.");
+        }
+
+        // This runs after both exceptions have been caught.
+        System.out.println("\nBoth errors were caught!");
+        System.out.println("The program closed without crashing.");
+    }
+}
